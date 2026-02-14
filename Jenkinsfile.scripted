@@ -1,0 +1,19 @@
+node {
+
+    stage('Clone Repository') {
+        echo "Repository already cloned."
+    }
+
+    stage('Build') {
+        echo "Building project..."
+        bat 'echo Scripted Build Successful > scripted.txt'
+    }
+
+    stage('Echo Build Status') {
+        echo "Scripted pipeline completed successfully!"
+    }
+
+    stage('Archive Artifacts') {
+        archiveArtifacts artifacts: 'scripted.txt', fingerprint: true
+    }
+}
